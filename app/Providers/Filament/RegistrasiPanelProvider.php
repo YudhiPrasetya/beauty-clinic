@@ -19,33 +19,23 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-use App\Filament\Pages\Login;
-
-class AdminPanelProvider extends PanelProvider
+class RegistrasiPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
-            ->id('admin')
-            ->path('admin')
-            ->spa()
-            // ->defaultThemeMode(ThemeMode::Light)
-            ->sidebarFullyCollapsibleOnDesktop()
-            ->brandLogo(asset('images/Logolna.png'))
-            ->brandLogoHeight('3rem')
-            // ->login(Login::class)
-            ->login()
-            ->registration()
+            ->id('registrasi')
+            ->path('registrasi')
             ->colors([
-                'primary' => Color::Pink,
+                'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
+            ->registration()
+            ->discoverResources(in: app_path('Filament/Registrasi/Resources'), for: 'App\Filament\Registrasi\Resources')
+            ->discoverPages(in: app_path('Filament/Registrasi/Pages'), for: 'App\Filament\Registrasi\Pages')
             ->pages([
                 Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
+            ->discoverWidgets(in: app_path('Filament/Registrasi/Widgets'), for: 'App\Filament\Registrasi\Widgets')
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
